@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 
 const Header = () => {
-  const linkStyle = "text-[#264414] hover:underline decoration-white decoration-4";
+  const linkStyle = "text-[#2F68BA] hover:underline decoration-white decoration-4";
 
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -18,7 +18,7 @@ const Header = () => {
     <div className='mx-auto top-0 sticky bg-[#DDE255] z-50'>
       <div className='flex mx-auto items-center justify-between px-4 h-16 md:justify-center lg:justify-center lg:px-0'>
         <header className='flex items-center gap-6'>
-          <Link href="/" className="font-bold text-lg text-[#264414] hover:text-white mr-8">Francie&apos;s Dev Chronicles</Link>
+          <Link href="/" className="font-bold text-lg text-[#2F68BA] hover:text-white mr-8">Francie&apos;s Dev Chronicles</Link>
 
           <nav className='hidden lg:block md:block'>
             <ul className='flex justify-center gap-6'>
@@ -30,7 +30,7 @@ const Header = () => {
 
           <div className='lg:hidden md:hidden'>
             <button
-              className='text-[#264414] hover:text-white'
+              className='text-[#2F68BA] hover:text-white'
               onClick={toggleMenu}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22">
