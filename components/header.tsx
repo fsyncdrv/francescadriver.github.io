@@ -15,7 +15,7 @@ const Header = () => {
 
 
   return (
-    <div className='mx-auto top-0 sticky bg-[#DDE255]'>
+    <div className='mx-auto top-0 sticky bg-[#DDE255] z-50'>
       <div className='flex mx-auto items-center justify-between px-4 h-16 md:justify-center lg:justify-center lg:px-0'>
         <header className='flex items-center gap-6'>
           <Link href="/" className="font-bold text-lg text-[#264414] hover:text-white mr-8">Francie&apos;s Dev Chronicles</Link>
