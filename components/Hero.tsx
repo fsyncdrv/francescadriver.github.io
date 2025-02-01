@@ -1,34 +1,50 @@
-// "use client";
-import React from 'react';
-import heroStyles from '@/app/styles/Hero.module.css'
+"use client";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import heroStyles from '@/app/styles/Hero.module.css';
+
+const NUM_SPARKLES = 30;
+const SPARKLE_SIZE = 85;
 
 const Hero = () => {
-  // const appRef = useRef<HTMLDivElement | null>(null);
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
 
-  // useEffect(() => {
-  //   const moveGradient = (event: MouseEvent) => {
-  //     const winWidth = window.innerWidth;
-  //     const winHeight = window.innerHeight;
+  // Update window size on client-side after the component mounts
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  }, []);
 
-  //     const mouseX = Math.round((event.pageX / winWidth) * 100);
-  //     const mouseY = Math.round((event.pageY / winHeight) * 100);
+  // Don't render the sparkles until the window size is available
+  if (windowWidth === 0 || windowHeight === 0) {
+    return null;
+  }
 
-  //     if (appRef.current) {
-  //       appRef.current.style.setProperty('--mouse-x', `${mouseX}%`);
-  //       appRef.current.style.setProperty('--mouse-y', `${mouseY}%`);
-  //     }
-  //   }
-  //   document.addEventListener('mousemove', moveGradient);
-  //   return () => {
-  //     document.removeEventListener('mousemove', moveGradient);
-  //   }
-  // })
+  const sparkles = Array.from({ length: NUM_SPARKLES }, (_, i) => ({
+    id: i,
+    top: Math.random() * (100 - (SPARKLE_SIZE / windowHeight) * 100),
+    left: Math.random() * (100 - (SPARKLE_SIZE / windowWidth) * 100),
+  }));
 
   return (
-    <div
-      className={heroStyles.heroBg}
-      // ref={appRef}
-    ></div>
+    <div className={heroStyles.heroBg}>
+      {sparkles.map((sparkle) => (
+        <Image
+          key={sparkle.id}
+          src="/sparkle.svg"
+          alt="sparkle image"
+          width={SPARKLE_SIZE}
+          height={SPARKLE_SIZE}
+          style={{
+            position: 'absolute',
+            top: `${sparkle.top}%`,
+            left: `${sparkle.left}%`,
+            pointerEvents: 'none',
+          }}
+        />
+      ))}
+    </div>
   )
 }
 
