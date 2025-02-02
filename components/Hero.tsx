@@ -3,33 +3,61 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import heroStyles from '@/app/styles/Hero.module.css';
 
-const NUM_SPARKLES = 30;
-const SPARKLE_SIZE = 85;
+const NUM_SPARKLES = 400;
+const SPARKLE_SIZE = 15;
+const colors = [
+  "#5BCEFA",
+  "#F5A9B8",
+  "#07BDD6",
+  "#D1EC3F",
+  "#A6E23D",
+  "#E6B4F4",
+  "#FF4AB3",
+  "#FC4024",
+];
+
 
 const Hero = () => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
 
+  const [sparkleColors, setSparkleColors] = useState(
+    Array(NUM_SPARKLES).fill("white")
+  );
+  const [sparkles, setSparkles] = useState([]);
+
   // Update window size on client-side after the component mounts
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
+
+    setSparkles(
+      Array.from({ length: NUM_SPARKLES }, (_, i) => ({
+        id: i,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+      }))
+    );
   }, []);
 
   // Don't render the sparkles until the window size is available
-  if (windowWidth === 0 || windowHeight === 0) {
+  if (windowWidth === 0 || windowHeight === 0 || sparkles.length === 0) {
     return null;
   }
 
-  const sparkles = Array.from({ length: NUM_SPARKLES }, (_, i) => ({
-    id: i,
-    top: Math.random() * (100 - (SPARKLE_SIZE / windowHeight) * 100),
-    left: Math.random() * (100 - (SPARKLE_SIZE / windowWidth) * 100),
-  }));
+  const handleHover = (i: number) => {
+    setSparkleColors((prevColors) => {
+      const newColors = [...prevColors];
+      newColors[i] = colors[Math.floor(Math.random() * colors.length)];
+
+      return newColors;
+    })
+  }
 
   return (
     <div className={heroStyles.heroBg}>
-      {sparkles.map((sparkle) => (
+
+      {sparkles.map((sparkle, index) => (
         <Image
           key={sparkle.id}
           src="/sparkle.svg"
@@ -40,8 +68,11 @@ const Hero = () => {
             position: 'absolute',
             top: `${sparkle.top}%`,
             left: `${sparkle.left}%`,
-            pointerEvents: 'none',
+            pointerEvents: `${sparkleColors[index]}`,
+            filter: `drop-shadow(0px 0px 10px ${sparkleColors[index]})`,
+            transition: 'filter 0.2s ease-in-out',
           }}
+          onMouseEnter={() => handleHover(index)}
         />
       ))}
     </div>
