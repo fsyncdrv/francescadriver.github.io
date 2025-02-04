@@ -28,25 +28,25 @@ const Hero = () => {
   const [sparkleColors, setSparkleColors] = useState(
     Array(NUM_SPARKLES).fill("white")
   );
-  const [sparkles, setSparkles] = useState([]);
+
+  const [sparkles, setSparkles] = useState(() =>
+    Array.from({ length: NUM_SPARKLES }, (_, i) => ({
+      id: i,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+    }))
+  );
 
   // Update window size on client-side after the component mounts
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
 
-    setSparkles(
-      Array.from({ length: NUM_SPARKLES }, (_, i) => ({
-        id: i,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-      }))
-    );
   }, []);
 
   // Don't render the sparkles until the window size is available
   if (windowWidth === 0 || windowHeight === 0 || sparkles.length === 0) {
-    return null;
+    return <div className={heroStyles.heroBg}/>;
   }
 
   const handleHover = (i: number) => {
@@ -55,30 +55,23 @@ const Hero = () => {
       newColors[i] = colors[Math.floor(Math.random() * colors.length)];
 
       return newColors;
-    })
+    });
+
+    const timeoutSparkle = setTimeout(() => {
+      setSparkleColors((prevColors) => {
+        const newColors = [...prevColors];
+        newColors[i] = "white";
+        return newColors;
+      });
+    }, 3000);
+
+    return () => clearTimeout(timeoutSparkle);
   }
 
   return (
     <div className={heroStyles.heroBg}>
 
       {sparkles.map((sparkle, index) => (
-        // <Image
-        //   key={sparkle.id}
-        //   src="/sparkle.svg"
-        //   alt="sparkle image"
-        //   width={SPARKLE_SIZE}
-        //   height={SPARKLE_SIZE}
-        //   style={{
-        //     position: 'absolute',
-        //     top: `${sparkle.top}%`,
-        //     left: `${sparkle.left}%`,
-        //     pointerEvents: `${sparkleColors[index]}`,
-        //     filter: `drop-shadow(0px 0px 12px ${sparkleColors[index]})`,
-        //     transition: 'filter 0.2s ease-in-out',
-        //   }}
-        //   onMouseEnter={() => handleHover(index)}
-        // />
-
         <Sparkle
           key={sparkle.id}
           alt="sparkle image"
@@ -89,9 +82,9 @@ const Hero = () => {
             position: 'absolute',
             top: `${sparkle.top}%`,
             left: `${sparkle.left}%`,
-            pointerEvents: `${sparkleColors[index]}`,
+            pointerEvents: "auto",
             filter: `drop-shadow(0px 0px 12px ${sparkleColors[index]})`,
-            transition: 'filter 0.2s ease-in-out',
+            transition: 'fill 10s ease-in-out, filter 1s ease-in-out',
           }}
           onMouseEnter={() => handleHover(index)}
         />
