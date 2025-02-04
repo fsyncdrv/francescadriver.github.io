@@ -2,20 +2,24 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import heroStyles from '@/app/styles/Hero.module.css';
+import Sparkle from '@/components/ui/Sparkle'
 
-const NUM_SPARKLES = 400;
-const SPARKLE_SIZE = 15;
+const NUM_SPARKLES = 180;
+const SPARKLE_SIZE = 35;
+const colors_night = [
+   "#E219F7",
+   "#E0B0FF",
+   "#00008E",
+   "#FFFFE0",
+ ];
+
 const colors = [
-  "#5BCEFA",
-  "#F5A9B8",
-  "#07BDD6",
-  "#D1EC3F",
-  "#A6E23D",
-  "#E6B4F4",
-  "#FF4AB3",
-  "#FC4024",
+  "#DFFF00",
+  "#ADFF2F",
+  "#6495ED",
+  "#80DAEB",
+  "#FF8CBF",
 ];
-
 
 const Hero = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -58,18 +62,35 @@ const Hero = () => {
     <div className={heroStyles.heroBg}>
 
       {sparkles.map((sparkle, index) => (
-        <Image
+        // <Image
+        //   key={sparkle.id}
+        //   src="/sparkle.svg"
+        //   alt="sparkle image"
+        //   width={SPARKLE_SIZE}
+        //   height={SPARKLE_SIZE}
+        //   style={{
+        //     position: 'absolute',
+        //     top: `${sparkle.top}%`,
+        //     left: `${sparkle.left}%`,
+        //     pointerEvents: `${sparkleColors[index]}`,
+        //     filter: `drop-shadow(0px 0px 12px ${sparkleColors[index]})`,
+        //     transition: 'filter 0.2s ease-in-out',
+        //   }}
+        //   onMouseEnter={() => handleHover(index)}
+        // />
+
+        <Sparkle
           key={sparkle.id}
-          src="/sparkle.svg"
           alt="sparkle image"
           width={SPARKLE_SIZE}
           height={SPARKLE_SIZE}
+          fill={sparkleColors[index]}
           style={{
             position: 'absolute',
             top: `${sparkle.top}%`,
             left: `${sparkle.left}%`,
             pointerEvents: `${sparkleColors[index]}`,
-            filter: `drop-shadow(0px 0px 10px ${sparkleColors[index]})`,
+            filter: `drop-shadow(0px 0px 12px ${sparkleColors[index]})`,
             transition: 'filter 0.2s ease-in-out',
           }}
           onMouseEnter={() => handleHover(index)}
