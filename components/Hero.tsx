@@ -24,7 +24,7 @@ const Hero = () => {
   const [activeColors, setActiveColors] = useState<string[]>(Array(sparkleCount).fill("#FFF"));
 
 
- const getRandomColorFromArray = () => {
+  const getRandomColorFromArray = () => {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   };
@@ -67,8 +67,12 @@ const Hero = () => {
   return (
     <>
       <section className={heroStyles.heroBg}>
+
         {/* TODO: add blog title */}
-        <div>
+        <div className={heroStyles.title}>
+        </div>
+
+        <div className={heroStyles.sparkleBg}>
           {Array.from({ length: sparkleCount }).map((_, index) => {
             const position = positions[index];
 
