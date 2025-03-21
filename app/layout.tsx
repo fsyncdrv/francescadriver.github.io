@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Amatic_SC, Petit_Formal_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header"
 
@@ -9,6 +9,15 @@ const roboto = Roboto({
   subsets: ['latin'],
   display: 'swap',
 })
+
+const amaticsc = Amatic_SC({
+  weight: ['400', '700'],
+})
+
+const petitformalscript = Petit_Formal_Script({
+  weight: ['400'],
+})
+
 
 export const metadata: Metadata = {
   title: "My portfolio",
