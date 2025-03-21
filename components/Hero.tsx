@@ -75,7 +75,7 @@ const Hero = () => {
           </p>
         </section>
 
-        <div className={heroStyles.sparkleBg}>
+        {/* <div className={heroStyles.sparkleBg}>
           {Array.from({ length: sparkleCount }).map((_, index) => {
             const position = positions[index];
 
@@ -116,7 +116,7 @@ const Hero = () => {
             )
           }
           )}
-        </div>
+        </div> */}
       </section>
     </>
   )
