@@ -10,9 +10,9 @@
     ),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 356 356' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='8.83' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   overflow: hidden;
-} */
+}
 
-.heroBg {
+/* .heroBg {
   position: relative;
   height: 100vh;
   overflow: hidden;
@@ -26,4 +26,31 @@
   .sparkleBg {
     display: none;
   }
+} */
+
+.title {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* background-color: rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  border-radius: 8px; */
+}
+
+.title p {
+  color: white;
+  font-size: 100px;
+  font-weight: 900;
+  font-size: 82px;
+}
+
+.title span {
+  /* font-family: "Petit Formal Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-align: right;
+  display: block; */
+  font-size: 82px;
 }
