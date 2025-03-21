@@ -67,10 +67,13 @@ const Hero = () => {
   return (
     <>
       <section className={heroStyles.heroBg}>
-
-        {/* TODO: add blog title */}
-        <div className={heroStyles.title}>
-        </div>
+        <section className={heroStyles.title}>
+          <p>
+            Hello. I'm Francie.<br />
+            I build stuff on the<br />
+            <span>web.</span>
+          </p>
+        </section>
 
         <div className={heroStyles.sparkleBg}>
           {Array.from({ length: sparkleCount }).map((_, index) => {
