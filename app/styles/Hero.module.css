@@ -1,3 +1,8 @@
+:root {
+  --line: #000;
+  --line-active: rgba(198, 192, 66, 0.55);
+}
+
 .heroBg {
   position: relative;
   height: 100vh;
@@ -12,31 +17,12 @@
   overflow: hidden;
 }
 
-/* .heroBg {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  filter: contrast(340%) brightness(100%);
-  background:
-    linear-gradient(188deg, rgba(10, 18, 57, 0.55), rgba(168, 168, 168, 0.54)),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 356 356' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='7.61' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-@media (max-width: 768px) {
-  .sparkleBg {
-    display: none;
-  }
-} */
-
 .title {
   position: absolute;
   top: 40%;
   left: 30%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  /* background-color: rgba(255, 255, 255, 0.8);
-  padding: 1px;
-  border-radius: 8px; */
 }
 
 .title p {
@@ -46,11 +32,43 @@
   font-size: 82px;
 }
 
-.title span {
-  /* font-family: "Petit Formal Script", cursive;
-  font-weight: 400;
-  font-style: normal;
-  text-align: right;
-  display: block; */
+.title a {
   font-size: 82px;
+  margin: 0;
+  color: black;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  margin: 0 var(--spacing, 0px);
+  transition: margin .25s;
+}
+
+.title svg {
+  width: 300px;
+  height: 160px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 7px) translateZ(0);
+  fill: none;
+  stroke: var(--stroke);
+  stroke-linecap: round;
+  stroke-width: 3px;
+  stroke-dasharray: var(--offset, 69px) 278px;
+  stroke-dashoffset: 5px;
+  transition: stroke .25s ease var(--stroke-delay, 0s), stroke-dasharray .35s;
+}
+
+.title a:hover {
+  --spacing: 4px;
+  --stroke: var(--line-active);
+  --stroke-delay: .1s;
+  --offset: 180px;
+  transform: rotate(-2deg);
+  /* transform: scale(1.2); */
+}
+
+.title a:hover svg {
+  transform: translate(-50%, 7px) scale (1.2);
 }
