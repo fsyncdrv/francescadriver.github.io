@@ -25,10 +25,12 @@ import About from "./About.astro";
     grid-template-areas:
       "nav posts about";
     gap: 2rem;
+    border-radius: 12px;
   }
 
   .nav-left {
     grid-area: nav;
+    /* display: flex; */
   }
 
   .posts {
@@ -37,6 +39,7 @@ import About from "./About.astro";
 
   .about {
     grid-area: about;
+    display: flex;
   }
 
   @media (max-width: 768px) {
