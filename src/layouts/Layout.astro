@@ -1,3 +1,6 @@
+---
+import Banner from '../components/Banner.astro';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -13,6 +16,7 @@
 	</head>
 	<body>
     <main>
+      <Banner />
 		  <slot />
     </main>
 	</body>
@@ -32,9 +36,9 @@
 	}
   main {
     width: 100%;
-    max-width: 1450px;
+    max-width: 1350px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     box-sizing: border-box;
   }
 </style>

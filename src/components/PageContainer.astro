@@ -7,7 +7,7 @@ import NavLeft from "./NavLeft.astro";
     <NavLeft />
   </div>
 
-  <div class="posts">
+  <div class="content">
     <slot />
   </div>
 </div>
@@ -16,9 +16,9 @@ import NavLeft from "./NavLeft.astro";
   .container {
     background: white;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
     grid-template-areas:
-      "nav posts";
+      "nav content";
     border-radius: 12px;
   }
 
@@ -27,15 +27,15 @@ import NavLeft from "./NavLeft.astro";
     /* display: flex; */
   }
 
-  .posts {
-    grid-area: posts;
+  .content {
+    grid-area: content;
   }
 
   @media (max-width: 768px) {
     .container {
       grid-template-columns: 1fr;
       grid-template-areas:
-        "posts"
+        "content"
         "nav";
     }
   }
