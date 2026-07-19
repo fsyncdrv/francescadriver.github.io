@@ -1,7 +1,17 @@
 <div class="nav-left">
   <img src="/kirby_dance.gif" alt="kirby dancing">
-  <div class="nav-links">
+  <div class="nav-div">
     <h2>Navigation</h2>
+    <div class="nav-links">
+      <ul>
+        <li>
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li>
+          <a href="/about" class="nav-link">About</a>
+        </li>
+      </ul>
+    </div>
   </div>
   <!-- <div class="music-player">
     <img src="/music-player.png" alt="a music player">
@@ -26,7 +36,7 @@
     margin-bottom: 24px;
   }
 
-  .nav-links {
+  .nav-div {
     background-color: #f67fdc;
     width: 200px;
     height: 330px;
@@ -34,10 +44,16 @@
     border-radius: 12px;
   }
 
-  .nav-links h2 {
+  .nav-div h2 {
     border-bottom: 6px solid white;
     padding-bottom: 0.5rem;
     font-size: 26px;
+  }
+
+  .nav-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   /* .music-player img {
