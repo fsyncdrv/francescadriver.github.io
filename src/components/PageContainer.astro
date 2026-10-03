@@ -19,17 +19,22 @@ import Banner from "./Banner.astro";
 
 <style>
   .container {
+    height: 100%;
     background: white;
     display: grid;
     grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "nav banner"
       "nav content";
-    border-radius: 0 0 14px 14px;
+    border-radius: 14px 14px 14px 14px;
+    overflow: hidden;
   }
 
   .nav-left {
     grid-area: nav;
+    position: sticky;
+    top: 0;
     /* display: flex; */
   }
 
@@ -44,11 +49,15 @@ import Banner from "./Banner.astro";
   .content {
     grid-area: content;
     min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
   }
 
   @media (max-width: 768px) {
     .container {
+      height: 100%;
       grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr;
       grid-template-areas:
         "banner"
         "nav"
@@ -56,7 +65,8 @@ import Banner from "./Banner.astro";
     }
 
     .content {
-      display: contents;
+      overflow-y: auto;
+      /* display: contents; */
     }
   }
 </style>
