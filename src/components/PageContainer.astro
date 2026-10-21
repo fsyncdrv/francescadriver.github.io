@@ -4,9 +4,9 @@ import Banner from "./Banner.astro";
 ---
 
 <div class="container">
-  <div class="nav-left">
+  <!-- <div class="nav-left">
     <NavLeft />
-  </div>
+  </div> -->
 
   <div class="banner">
     <Banner />
@@ -22,13 +22,23 @@ import Banner from "./Banner.astro";
     height: 100%;
     /* background: white; */
     display: grid;
-    grid-template-columns: 220px 1fr;
+    /* TODO: uncomment the following when adding nav-left back */
+    /* grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr; */
+    /* grid-template-areas:
+      "nav banner"
+      "nav content"; */
+    /* TODO: remove the following 3 lines when adding nav-left back */
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "nav banner"
-      "nav content";
-    border-radius: 14px 14px 14px 14px;
+      "banner"
+      "content";
+    border-radius: 14px;
     overflow: hidden;
+    /* TODO: remove the following 2 lines when adding nav-left back */
+    margin-right: 60px;
+    margin-left: 60px;
   }
 
   .nav-left {
